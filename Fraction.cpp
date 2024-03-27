@@ -119,3 +119,8 @@ Fraction Fraction::operator/(float number)
 {
 	return *this / Fraction(number);
 }
+
+void Fraction::print()
+{
+	std::cout << numerator << " / " << denominator << std::endl;
+}

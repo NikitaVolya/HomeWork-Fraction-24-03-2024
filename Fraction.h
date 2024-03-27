@@ -6,6 +6,7 @@ class Fraction
 {
 private:
 	int numerator, denominator;
+	void autoResize();
 public:
 	
 	Fraction(int numer, int denom);
@@ -17,8 +18,6 @@ public:
 
 	void setNumerator(int number) { numerator = number; };
 	void setDenominator(int number) { denominator = number; };
-
-	void autoResize();
 
 	Fraction operator+(Fraction other);
 	Fraction operator-(Fraction other);
@@ -34,4 +33,6 @@ public:
 	Fraction operator-(float number);
 	Fraction operator*(float number);
 	Fraction operator/(float number);
+
+	void print();
 };
