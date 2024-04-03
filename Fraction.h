@@ -34,5 +34,7 @@ public:
 	Fraction operator*(float number);
 	Fraction operator/(float number);
 
+	const Fraction& getBigger(const Fraction& other);
+
 	void print();
 };

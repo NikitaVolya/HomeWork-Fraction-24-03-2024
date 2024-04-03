@@ -120,6 +120,14 @@ Fraction Fraction::operator/(float number)
 	return *this / Fraction(number);
 }
 
+const Fraction& Fraction::getBigger(const Fraction& other)
+{
+	if (denominator == other.denominator)
+		return numerator > other.numerator ? *this : other;
+	else
+		return numerator * other.denominator > other.numerator * denominator ? *this : other;
+}
+
 void Fraction::print()
 {
 	std::cout << numerator << " / " << denominator << std::endl;
