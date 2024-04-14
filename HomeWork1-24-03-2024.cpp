@@ -5,8 +5,12 @@ using namespace std;
 
 int main()
 {
-	Fraction a = Fraction(1, 10);
-	Fraction c = a + 0.4f;
+	Fraction a = Fraction(2, 10);
+	Fraction b = Fraction(5, 3);
+	Fraction c = b - a;
 
-	cout << c.getNumerator() << " | " << c.getDenominator() << endl;
+	c.print();
+	(-a).print();
+	(c + a).print();
+	(a + 0.5f).print();
 }

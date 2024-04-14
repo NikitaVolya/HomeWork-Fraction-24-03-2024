@@ -9,32 +9,25 @@ private:
 	void autoResize();
 public:
 	
-	Fraction(int numer, int denom);
+	Fraction(const Fraction& other);
 	Fraction(float number);
+	Fraction(int numer, int denom);
 
-	int getNumerator() { return numerator; };
-	int getDenominator() { return denominator; };
-	float getFloat() { return (float)numerator / denominator; }
+	int getNumerator() const { return numerator; };
+	int getDenominator() const { return denominator; };
+	float getFloat() const { return (float)numerator / denominator; }
 
 	void setNumerator(int number) { numerator = number; };
 	void setDenominator(int number) { denominator = number; };
 
-	Fraction operator+(Fraction other);
-	Fraction operator-(Fraction other);
-	Fraction operator*(Fraction other);
-	Fraction operator/(Fraction other);
+	Fraction operator-() const;
 
-	Fraction operator+(int number);
-	Fraction operator-(int number);
-	Fraction operator*(int number);
-	Fraction operator/(int number);
+	Fraction operator+(const Fraction& other) const;
+	Fraction operator-(const Fraction& other) const;
+	Fraction operator*(const Fraction& other) const;
+	Fraction operator/(const Fraction& other) const;
 
-	Fraction operator+(float number);
-	Fraction operator-(float number);
-	Fraction operator*(float number);
-	Fraction operator/(float number);
+	const Fraction& getBigger(const Fraction& other) const;
 
-	const Fraction& getBigger(const Fraction& other);
-
-	void print();
+	void print() const;
 };

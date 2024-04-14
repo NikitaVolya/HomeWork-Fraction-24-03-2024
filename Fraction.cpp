@@ -7,6 +7,10 @@ inline Fraction::Fraction(int numer, int denom)
 	autoResize();
 }
 
+Fraction::Fraction(const Fraction& other) : numerator(other.numerator), denominator(other.denominator)
+{
+}
+
 inline Fraction::Fraction(float number)
 {
 	if (number < 0)
@@ -24,8 +28,8 @@ inline Fraction::Fraction(float number)
 
 void Fraction::autoResize()
 {
-	int first = numerator;
-	int second = denominator;
+	int first = std::fabs(numerator);
+	int second = std::fabs(denominator);
 
 	while (first % second != 0)
 	{
@@ -40,87 +44,40 @@ void Fraction::autoResize()
 
 
 
-Fraction Fraction::operator+(Fraction other)
+Fraction Fraction::operator-() const
+{
+	return Fraction(-numerator, denominator);
+}
+
+Fraction Fraction::operator+(const Fraction& other) const
 {
 	Fraction res = Fraction(numerator * other.denominator + other.numerator * denominator, denominator * other.denominator);
 	res.autoResize();
 	return res;
 }
 
-Fraction Fraction::operator-(Fraction other)
+Fraction Fraction::operator-(const Fraction& other) const
 {
 	Fraction res = Fraction(numerator * other.denominator - other.numerator * denominator, denominator * other.denominator);
 	res.autoResize();
 	return res;
 }
 
-Fraction Fraction::operator*(Fraction other)
+Fraction Fraction::operator*(const Fraction& other) const
 {
 	Fraction res = Fraction(numerator * other.numerator, denominator * other.denominator);
 	res.autoResize();
 	return res;
 }
 
-Fraction Fraction::operator/(Fraction other)
+Fraction Fraction::operator/(const Fraction& other) const
 {
 	Fraction res = Fraction(numerator * other.denominator, denominator * other.numerator);
 	res.autoResize();
 	return res;
 }
 
-
-
-Fraction Fraction::operator+(int number)
-{
-	Fraction res = Fraction(numerator + number * denominator, denominator);
-	res.autoResize();
-	return res;
-}
-
-Fraction Fraction::operator-(int number)
-{
-	Fraction res = Fraction(numerator - number * denominator, denominator);
-	res.autoResize();
-	return res;
-}
-
-Fraction Fraction::operator*(int number)
-{
-	Fraction res = Fraction(numerator * number, denominator);
-	res.autoResize();
-	return res;
-}
-
-Fraction Fraction::operator/(int number)
-{
-	Fraction res = Fraction(numerator, denominator * number);
-	res.autoResize();
-	return res;
-}
-
-
-
-Fraction Fraction::operator+(float number)
-{
-	return *this + Fraction(number);
-}
-
-Fraction Fraction::operator-(float number)
-{
-	return *this - Fraction(number);
-}
-
-Fraction Fraction::operator*(float number)
-{
-	return *this * Fraction(number);
-}
-
-Fraction Fraction::operator/(float number)
-{
-	return *this / Fraction(number);
-}
-
-const Fraction& Fraction::getBigger(const Fraction& other)
+const Fraction& Fraction::getBigger(const Fraction& other) const
 {
 	if (denominator == other.denominator)
 		return numerator > other.numerator ? *this : other;
@@ -128,7 +85,7 @@ const Fraction& Fraction::getBigger(const Fraction& other)
 		return numerator * other.denominator > other.numerator * denominator ? *this : other;
 }
 
-void Fraction::print()
+void Fraction::print() const
 {
 	std::cout << numerator << " / " << denominator << std::endl;
 }
