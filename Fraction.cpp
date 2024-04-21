@@ -89,3 +89,18 @@ void Fraction::print() const
 {
 	std::cout << numerator << " / " << denominator << std::endl;
 }
+
+std::ostream& operator<<(std::ostream& out, const Fraction& fraction)
+{
+	out << fraction.numerator << " / " << fraction.denominator;
+	return out;
+}
+
+void operator>>(std::istream& in, Fraction& fraction)
+{
+	std::cout << "numerator: ";
+	std::cin >> fraction.numerator;
+	std::cout << "denominator: ";
+	std::cin >> fraction.denominator;
+	fraction.autoResize();
+}
