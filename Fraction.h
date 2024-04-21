@@ -30,7 +30,7 @@ public:
 	const Fraction& getBigger(const Fraction& other) const;
 
 	friend std::ostream& operator<<(std::ostream& out, const Fraction& fraction);
-	friend void operator>>(std::istream& in, Fraction& fraction);
+	friend std::istream& operator>>(std::istream& in, Fraction& fraction);
 
 	void print() const;
 };

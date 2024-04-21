@@ -96,11 +96,12 @@ std::ostream& operator<<(std::ostream& out, const Fraction& fraction)
 	return out;
 }
 
-void operator>>(std::istream& in, Fraction& fraction)
+std::istream& operator>>(std::istream& in, Fraction& fraction)
 {
 	std::cout << "numerator: ";
 	std::cin >> fraction.numerator;
 	std::cout << "denominator: ";
 	std::cin >> fraction.denominator;
 	fraction.autoResize();
+	return in;
 }
